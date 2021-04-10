@@ -6,7 +6,7 @@ import json
 import requests
 from newsapi.newsapi_client import NewsApiClient
 from bs4 import BeautifulSoup
-
+from gazetteAI.allinone import *
 class Object:
     def toJSON(self):
         return json.dumps(self,default = lambda o: o.__dict__,sort_keys=True,indent=4)
@@ -28,6 +28,7 @@ def topheadlines(request):
 
 @api_view(['GET'])
 def customtopheadlines(request):
+
     json_content = []
     newsapi = NewsApiClient(api_key='e714e075a7534f85b7e0bdfd2330c611')
     top_headlines = newsapi.get_top_headlines(
@@ -87,7 +88,7 @@ def customsearchresults(request):
         #     whole_content = whole_content + " " + paragraph_list[item].get_text()
         
         custom_object = {
-            "hero" : "To be decided",
+            "heroes" : "To be decided",
             "victim" : "To be decided",
             "villian" : "To be decided",
             "source" : news_object["source"]["name"],
