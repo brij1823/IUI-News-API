@@ -24,4 +24,3 @@ nltk
 textblob
 spacy
 flask
-json
