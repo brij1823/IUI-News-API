@@ -41,7 +41,7 @@ def customtopheadlines(request):
                                         language='en',
                                         country='us')
     top_headlines = top_headlines['articles']
-    for i in range(1,5):
+    for i in range(1,2):
         news_object = top_headlines[i]
         results,temp,temp_2 = assign_roles(news_object['url'],2.0, 0.25)
         custom_object = {
