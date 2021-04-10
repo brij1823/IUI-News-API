@@ -12,6 +12,7 @@ nltk.download('averaged_perceptron_tagger')
 nltk.download('maxent_ne_chunker')
 nltk.download('words')
 nltk.download('wordnet')
+nltk.download('punkt')
 class Object:
     def toJSON(self):
         return json.dumps(self,default = lambda o: o.__dict__,sort_keys=True,indent=4)
