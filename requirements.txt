@@ -22,5 +22,5 @@ whitenoise==5.2.0
 newspaper3k
 nltk
 textblob
-spacy
+spacy==2.3.5
 flask
