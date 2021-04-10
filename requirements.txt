@@ -24,3 +24,4 @@ nltk
 textblob
 spacy
 flask
+ast

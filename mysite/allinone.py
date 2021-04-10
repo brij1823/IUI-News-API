@@ -11,17 +11,26 @@ from textblob import TextBlob
 
 import codecs
 from nltk import ne_chunk, pos_tag, word_tokenize
-
+import ast
+import json
 app = Flask(__name__)
-
+import json
 '''
 Assigns entities in a news article to roles of hero, villain, or victim.
 '''
 
 
-from stop_words import STOP_WORDS
-from similarity_dictionary import SIM_DIC
+# from mysite.stop_words import STOP_WORDS
+# from similarity_dictionary import SIM_DIC
 
+f = open('mysite/stop_words.txt', 'r')
+STOP_WORDS =  f.read()
+STOP_WORDS = STOP_WORDS[1:-1]
+STOP_WORDS = STOP_WORDS.split(',')
+with open('mysite/similarity_dictionary.txt') as f:
+    data = f.read()
+
+SIM_DIC =  json.loads(data)
 '''
 Recognizes the entities in a news article with a headline and determines
 which of these entities are the  most relevant.
@@ -317,7 +326,7 @@ VILLAIN = 1
 VICTIM = 2
 
 # Spacy model for detecting active/passive entities
-nlp = spacy.load('en')
+nlp = spacy.load('en_core_web_sm')
 
 
 # Raised when newspaper fails to extract article or headline
@@ -685,9 +694,8 @@ def get_roles_and_top_words():
                 namdict.append(get_top_words(top_hero_words[i]))
 
     result = [x[0] for x in entities_role_results]
+    print('BRIJ')
     print(result)
-    print(top_words)
-    print(namdict)
     #print(namscore)
     return result, top_words,namdict
 
